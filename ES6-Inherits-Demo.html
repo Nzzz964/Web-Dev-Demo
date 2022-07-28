@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Inherits Demo</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Animal {
+        constructor() {
+            console.log("Animal Constructor")
+        }
+
+        run() {
+            console.log("Animal Run")
+        }
+    }
+    class Dog extends Animal {
+        constructor() {
+            super()
+            console.log("Dog Constructor")
+        }
+
+        run() {
+            console.log("Dog Run")
+        }
+
+        barking() {
+            console.log("Dog Barking")
+        }
+    }
+    console.log("[Class]")
+    //                                                   显式原型          隐式原型
+    console.log("[Animal prototype & __proto__]", Animal.prototype, Animal.__proto__)
+    console.log(   "[Dog prototype & __proto__]", Dog.prototype,    Dog.__proto__)
+
+    console.log(             Dog.__proto__ === Animal)                       //True
+    console.log(          Animal.__proto__ === Function.prototype)           //True
+    console.log(   Dog.prototype.__proto__ === Animal.prototype)             //True
+    console.log(Animal.prototype.__proto__ === Function.prototype.__proto__) //True
+
+    console.log("[Instance]")
+
+    const animal = new Animal()
+    const dog    = new Dog()
+
+    console.log("[animal __proto__]", animal.__proto__)
+    console.log(   "[dog __proto__]", dog.__proto__)
+    console.log(dog.__proto__.__proto__ === animal.__proto__) //True
+    console.log(          dog.__proto__ === Dog.prototype)    //True
+    console.log(       animal.__proto__ === Animal.prototype) //True
+    </script>
+
+</html>
